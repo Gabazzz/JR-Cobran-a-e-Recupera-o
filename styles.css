@@ -4,20 +4,22 @@
  */
 
 :root {
-    /* Obsidian & Gold Palette */
-    --bg-obsidian: #030303;
-    --bg-surface: rgba(15, 15, 15, 0.4);
-    --bg-panel: rgba(20, 20, 20, 0.6);
+    /* Deep Blue & Gold Palette */
+    --bg-obsidian: #0A1628;      /* azul marinho profundo */
+    --bg-secondary: #1A3A5C;     /* azul médio */
+    --bg-footer: #060E1A;        /* azul quase preto */
+    --bg-surface: rgba(26, 58, 92, 0.45);
+    --bg-panel: rgba(26, 58, 92, 0.6);
     
-    --border-glass: rgba(255, 255, 255, 0.05);
-    --border-gold: rgba(212, 175, 55, 0.3);
+    --border-glass: rgba(201, 168, 76, 0.12); /* dourado sutil com baixa opacidade */
+    --border-gold: rgba(201, 168, 76, 0.35);  /* dourado com opacidade média */
     
-    --text-primary: #FFFFFF;
-    --text-secondary: #A1A1AA;
+    --text-primary: #F5F5F5;     /* branco suave */
+    --text-secondary: #A0AEC0;   /* cinza claro */
     
-    --accent-gold: #D4AF37;
+    --accent-gold: #C9A84C;      /* dourado elegante */
     --accent-bronze: #CD7F32;
-    --accent-glow: rgba(212, 175, 55, 0.15);
+    --accent-glow: rgba(201, 168, 76, 0.25);
     
     /* Typography */
     --font-display: 'Fraunces', serif;
@@ -47,6 +49,7 @@ html {
 }
 
 body {
+    background: radial-gradient(circle at 50% 0%, #162f50 0%, var(--bg-obsidian) 75%);
     background-color: var(--bg-obsidian);
     color: var(--text-primary);
     font-family: var(--font-body);
@@ -72,7 +75,7 @@ body::before {
 /* Typography */
 h1, h2, h3, h4 {
     font-family: var(--font-display);
-    font-weight: 300;
+    font-weight: 800; /* extrabold */
     line-height: 1.1;
     letter-spacing: -0.02em;
 }
@@ -80,7 +83,8 @@ h1, h2, h3, h4 {
 em {
     font-style: italic;
     color: var(--accent-gold);
-    font-weight: 400;
+    font-weight: inherit;
+    text-shadow: 0 0 20px rgba(201, 168, 76, 0.35);
 }
 
 .overline {
@@ -129,25 +133,28 @@ a {
     justify-content: center;
     padding: 1.25rem 2.5rem;
     font-family: var(--font-body);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.95rem;
     letter-spacing: 0.05em;
-    border-radius: 0;
+    border-radius: 4px;
     transition: all 0.5s var(--ease-out-expo);
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 .btn-solid {
-    background: var(--text-primary);
-    color: var(--bg-obsidian);
-    border: 1px solid var(--text-primary);
+    background: var(--accent-gold);
+    color: #0A1628;
+    border: 1px solid var(--accent-gold);
 }
 
 .btn-solid:hover {
     background: transparent;
-    color: var(--text-primary);
+    color: var(--accent-gold);
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.5);
+    transform: translateY(-2px);
 }
 
 .btn-outline {
@@ -159,21 +166,61 @@ a {
 
 .btn-outline:hover {
     border-color: var(--accent-gold);
-    background: rgba(212, 175, 55, 0.05);
+    background: rgba(201, 168, 76, 0.1);
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.25);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    transition: all 0.5s var(--ease-out-expo);
+    cursor: pointer;
+    background: transparent;
+    color: var(--accent-gold);
+    border: 1px solid var(--border-gold);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary:hover {
+    background: var(--accent-gold);
+    color: #0A1628;
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Specific Style for Navbar CTA to stand out */
+.navbar .btn-outline {
+    background: var(--accent-gold);
+    color: #0A1628;
+    border: 1px solid var(--accent-gold);
+}
+
+.navbar .btn-outline:hover {
+    background: transparent;
+    color: var(--accent-gold);
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.55);
 }
 
 /* Navbar */
 .navbar {
     position: fixed;
     top: 0; left: 0; width: 100%;
-    padding: 2rem 0;
+    padding: 2.2rem 0;
     z-index: 1000;
     transition: all 0.5s var(--ease-out-expo);
 }
 
 .navbar.scrolled {
-    padding: 1rem 0;
-    background: rgba(3, 3, 3, 0.85);
+    padding: 1.2rem 0;
+    background: rgba(10, 22, 40, 0.95);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-glass);
 }
@@ -187,9 +234,10 @@ a {
 .logo-jr {
     font-family: var(--font-display);
     font-size: 2.5rem;
-    font-weight: 400;
-    color: var(--text-primary);
+    font-weight: 800; /* extrabold */
+    color: var(--accent-gold);
     line-height: 1;
+    text-shadow: 0 0 15px rgba(201, 168, 76, 0.25);
 }
 
 .nav-links {
@@ -240,7 +288,7 @@ a {
     top: 0; left: 0;
     width: 400px; height: 400px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(201, 168, 76, 0.05) 0%, transparent 60%);
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 999;
@@ -253,6 +301,8 @@ a {
     display: flex;
     align-items: center;
     padding-top: var(--space-xl);
+    background: linear-gradient(180deg, #0A1628 0%, #152d48 50%, #1A3A5C 100%);
+    position: relative;
 }
 
 .hero-grid {
@@ -287,7 +337,7 @@ a {
     background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
     border: 1px solid var(--border-glass);
     backdrop-filter: blur(20px);
-    border-radius: 2px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -318,6 +368,7 @@ a {
 .services {
     padding: var(--space-2xl) 0;
     position: relative;
+    background: linear-gradient(180deg, #1A3A5C 0%, #12253d 50%, #0A1628 100%);
 }
 
 .large-heading {
@@ -335,21 +386,29 @@ a {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 300px);
-    gap: 2px; /* Brutalist sharp gaps */
-    background: var(--border-glass);
-    border: 1px solid var(--border-glass);
+    gap: 20px; /* Modern spacing instead of brutalist gap */
+    background: transparent;
+    border: none;
 }
 
 .glass-panel {
-    background: var(--bg-obsidian);
+    background: rgba(26, 58, 92, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    border-radius: 12px;
     padding: 3rem;
     position: relative;
     overflow: hidden;
-    transition: background 0.5s var(--ease-out-expo);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s var(--ease-out-expo);
 }
 
 .glass-panel:hover {
-    background: #080808;
+    background: rgba(26, 58, 92, 0.6);
+    border-color: rgba(201, 168, 76, 0.35);
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
 }
 
 .bento-large {
@@ -360,14 +419,16 @@ a {
 .bento-num {
     display: block;
     font-family: var(--font-body);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--accent-gold);
     margin-bottom: 1.5rem;
+    font-weight: 600;
 }
 
 .glass-panel h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
+    font-weight: 700;
 }
 
 .glass-panel p {
@@ -379,28 +440,35 @@ a {
 /* Contact Section */
 .contact {
     padding: var(--space-xl) 0 var(--space-2xl);
+    background: linear-gradient(180deg, #0A1628 0%, #11263f 30%, #1A3A5C 100%);
 }
 
 .contact-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    background: transparent;
-    border: 1px solid var(--border-glass);
+    background: rgba(26, 58, 92, 0.3);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
     padding: 0;
 }
 
 .contact-info {
     padding: 4rem;
-    background: rgba(10, 10, 10, 0.5);
+    background: rgba(10, 22, 40, 0.3);
     backdrop-filter: blur(10px);
-    border-right: 1px solid var(--border-glass);
+    border-right: 1px solid rgba(201, 168, 76, 0.15);
     overflow: hidden;
 }
 
 .contact-info h2 {
     font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 2rem;
+    font-weight: 800;
 }
 
 .contact-info p {
@@ -420,6 +488,7 @@ a {
     color: var(--accent-gold);
     letter-spacing: 0.1em;
     margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
 .detail-item .value {
@@ -432,7 +501,7 @@ a {
 
 .contact-form-area {
     padding: 4rem;
-    background: var(--bg-obsidian);
+    background: rgba(26, 58, 92, 0.25);
     overflow: hidden;
 }
 
@@ -452,13 +521,19 @@ a {
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 1px solid var(--border-glass);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 1.25rem;
     padding: 1rem 0;
     outline: none;
     resize: none;
+    transition: border-bottom 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-bottom: 1px solid rgba(201, 168, 76, 0.5);
 }
 
 .input-group label {
@@ -482,9 +557,10 @@ a {
 .line-focus {
     position: absolute;
     bottom: 0; left: 0;
-    width: 0; height: 1px;
+    width: 0; height: 2px;
     background: var(--accent-gold);
     transition: width 0.5s var(--ease-out-expo);
+    box-shadow: 0 0 10px rgba(201, 168, 76, 0.5);
 }
 
 .input-group input:focus ~ .line-focus,
@@ -511,7 +587,8 @@ a {
 
 /* Footer */
 .site-footer {
-    border-top: 1px solid var(--border-glass);
+    background: var(--bg-footer);
+    border-top: 1px solid rgba(201, 168, 76, 0.15);
     padding: 5rem 0 2rem;
 }
 
@@ -530,17 +607,30 @@ a {
 
 .footer-col h4 {
     font-family: var(--font-body);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--text-secondary);
+    color: var(--accent-gold);
     margin-bottom: 1.5rem;
+    font-weight: 600;
 }
 
-.footer-col a, .footer-col p {
+.footer-col a {
     display: block;
     margin-bottom: 0.5rem;
-    color: var(--text-primary);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+    color: var(--accent-gold);
+}
+
+.footer-col p {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
     font-size: 0.95rem;
 }
 
@@ -646,7 +736,7 @@ a {
     .mobile-nav-overlay {
         position: fixed;
         inset: 0;
-        background: rgba(3, 3, 3, 0.97);
+        background: rgba(10, 22, 40, 0.98);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         display: flex;
@@ -668,7 +758,7 @@ a {
     .mobile-nav-overlay a {
         font-family: var(--font-display);
         font-size: clamp(2rem, 8vw, 3rem);
-        font-weight: 300;
+        font-weight: 700;
         color: var(--text-primary);
         letter-spacing: -0.02em;
     }
@@ -681,11 +771,11 @@ a {
     }
 
     /* ── Tipografia Mobile ───────────────────────── */
-    .hero h1         { font-size: clamp(2.2rem, 9vw, 3.5rem); }
+    .hero h1         { font-size: clamp(2.2rem, 9vw, 3.5rem); font-weight: 800; }
     .hero-sub        { font-size: 1rem; max-width: 100%; }
-    .large-heading   { font-size: clamp(1.8rem, 7vw, 2.5rem); }
-    .contact-info h2 { font-size: clamp(1.8rem, 7vw, 2.5rem); }
-    .glass-panel h3  { font-size: 1.4rem; }
+    .large-heading   { font-size: clamp(1.8rem, 7vw, 2.5rem); font-weight: 800; }
+    .contact-info h2 { font-size: clamp(1.8rem, 7vw, 2.5rem); font-weight: 800; }
+    .glass-panel h3  { font-size: 1.4rem; font-weight: 700; }
     .overline        { font-size: 0.7rem; }
 
     /* ── Hero centralizado no mobile ────────────── */
@@ -695,8 +785,8 @@ a {
 
     /* ── Espaçamentos ────────────────────────────── */
     .footer-content { grid-template-columns: 1fr; gap: 2.5rem; }
-    .contact-info, .contact-form-area { padding: 2rem 1.25rem; overflow: hidden; }
-    .glass-panel { padding: 2rem 1.25rem; }
+    .contact-info, .contact-form-area { padding: 2.5rem 1.5rem; overflow: hidden; }
+    .glass-panel { padding: 2.5rem 1.5rem; }
     .section-heading p { font-size: 1rem; }
 
     /* ── Textos longos ───────────────────────────── */
@@ -713,8 +803,8 @@ a {
     .btn-submit { padding: 1rem; width: 100%; justify-content: center; }
 
     /* ── Contato full-width ──────────────────────── */
-    .contact-wrapper { border: none; }
-    .contact-info, .contact-form-area { border: 1px solid var(--border-glass); margin-bottom: 2px; }
+    .contact-wrapper { border: none; border-radius: 0; background: transparent; box-shadow: none; }
+    .contact-info, .contact-form-area { border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 12px; margin-bottom: 15px; }
 
     /* ── Orbs: conter dentro da tela ────────────── */
     .glow-orb { opacity: 0.2; }
